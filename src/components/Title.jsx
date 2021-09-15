@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 const Title = ({setTitle}) => {
 
@@ -7,7 +7,13 @@ const Title = ({setTitle}) => {
     const defineTitleName = (e) => {
         setTitleName(e.target.value);
     }
-    setTitle(titleName);
+    useEffect(() => {
+        return(
+            // Esto estaba separado no adentro de un useEffect, quise ponerlo aca adentro para tratar de resolver el warning de la consola.
+            setTitle(titleName)
+        )
+    }, [])
+    
     return(
         <div>
             <input type="text" name="title" onChange={defineTitleName} />
