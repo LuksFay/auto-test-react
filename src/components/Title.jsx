@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+// import {v4 as uuidv4} from 'uuid';  //Id import
+const shortid = require('shortid'); // Id import
 
 const Title = () => {
 
@@ -29,12 +31,21 @@ const Title = () => {
     // este boton crea la nota y le agrega id
     const submitNote = (e) => {
         e.preventDefault();
+
+        // este if va a validar que no se mande ninguna nota sin titulo o sin contenido
         if(title.trim() === '' || content.trim() === '') {setCampoVacio(true); return}
         setCampoVacio(false)
+
+        
+        // note.id = uuidv4();
+        // console.log(note.id);
+        note.id = shortid.generate()
+        console.log(note.id);
+
+
         return(
             console.log('boton pulsado')
-        )
-        
+        )        
         // en caso de que el campo este vacio
     }
     return(
