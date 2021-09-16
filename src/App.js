@@ -1,13 +1,29 @@
 import React, {useState} from 'react'
-import Title from './components/Title'
-import ShowTitle  from './components/ShowTitle'
+import NewNote from './components/NewNote'
+import Notes from './components/Notes';
 function App() {
-  const [title,setTitle] = useState('');
+  const [postedNotes,setPostedNote] = useState([]);
+
+  const showNote = (postedNote) => {
+    // console.log(postedNote);
+    setPostedNote(
+      [
+        ...postedNotes,
+        postedNote
+      ]
+    )
+  }
+
   return (
     <>
-    <Title setTitle={setTitle} title={title}/>
-    <ShowTitle title={title}/>
-    
+    <NewNote showNote={showNote}/>
+    <div>
+      {postedNotes.map((note)=>{
+        return(
+          <Notes key= {note.id} note={note}/>
+        )
+      })}
+    </div>
     </>
   );
 }

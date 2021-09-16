@@ -2,16 +2,20 @@ import React, {useState} from 'react'
 // import {v4 as uuidv4} from 'uuid';  //Id import
 const shortid = require('shortid'); // Id import
 
-const Title = () => {
+const NewNote = ({showNote}) => {
 
     //entonces esta variable es un objeto que contiene title equivalente al primer input y content equivalente al segundo input 
     const [note,createNote] = useState({
         title:'',
         content: ''
     })
+    
+    // variable para solicitar que los campos esten completos
     const [campoVacio, setCampoVacio] = useState(false)
+    
+    
+    
     // desestructurar la nota
-
     const {title,content} = note
 
     //En esta función le estoy diciendo al state de Title del archivo app que a traves del valor del input represente la informacion recibida
@@ -40,9 +44,15 @@ const Title = () => {
         // note.id = uuidv4();
         // console.log(note.id);
         note.id = shortid.generate()
-        console.log(note.id);
 
+        
+        showNote(note)
 
+        // usar el state de note para dejar los campos vacios
+        createNote({
+            title: '',
+            content: ''
+        })
         return(
             console.log('boton pulsado')
         )        
@@ -59,4 +69,4 @@ const Title = () => {
     
 }
 
-export default Title
+export default NewNote
