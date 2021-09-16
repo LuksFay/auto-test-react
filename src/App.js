@@ -5,8 +5,9 @@ function App() {
   const [title,setTitle] = useState('');
   return (
     <>
-    <Title setTitle={setTitle}/>
+    <Title setTitle={setTitle} title={title}/>
     <ShowTitle title={title}/>
+    
     </>
   );
 }
