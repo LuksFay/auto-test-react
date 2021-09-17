@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import NewNote from './components/NewNote'
 import Notes from './components/Notes';
+import Modal from './components/Modal';
 function App() {
 
   let initialNotes = JSON.parse(localStorage.getItem('postedNotes'));
@@ -8,6 +9,7 @@ function App() {
     initialNotes = [];
   }
   const [postedNotes,setPostedNote] = useState(initialNotes);
+  const [modal, setModal] = useState(false)
   useEffect(()=>{
     let initialNotes = JSON.parse(localStorage.getItem('postedNotes'));
     if(initialNotes){
@@ -24,8 +26,11 @@ function App() {
       ]
     )
   }
-  const deleteNotes = (id) => {
+  const editNotes = (id) => {
     console.log(id);
+    setModal(true)
+  }
+  const deleteNotes = (id) => {
     const newNotes = postedNotes.filter(note => note.id !== id);
     setPostedNote(newNotes)
   }
@@ -35,10 +40,11 @@ function App() {
     <div>
       {postedNotes.map((Note)=>{
         return(
-          <Notes key={Note.id} Note={Note}  deleteNotes={deleteNotes}/>
+          <Notes key={Note.id} Note={Note}  deleteNotes={deleteNotes} editNotes={editNotes}/>
         )
       })}
     </div>
+    {modal ? <Modal editNotes={editNotes} postedNotes={postedNotes} /> : null}
     </>
   );
 }

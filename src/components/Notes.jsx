@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const Notes = ({Note, deleteNotes}) => {
+const Notes = ({Note, deleteNotes, editNotes}) => {
     return (
         <>
         <div>
             <p>title: {Note.title}</p>
             <p>content: {Note.content}</p>
-            <button>edit</button>
+            <button onClick={() => editNotes(Note.id)}>edit</button>
             <button onClick={()=>deleteNotes(Note.id)}>delete</button>
         </div>
         </>

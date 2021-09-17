@@ -25,14 +25,12 @@ const NewNote = ({showNote}) => {
             title: '',
             content: ''
         })
-        return(
-            console.log('boton pulsado')
-        )        
+      
     }
     return(
         <form onSubmit={submitNote}>
             <input type="text" name="title" onChange={writingNote} value={title} />
-            <textarea name="content" id="" cols="30" rows="10" onChange={writingNote} value={content}></textarea>
+            <textarea name="content" cols="30" rows="10" onChange={writingNote} value={content}></textarea>
             <input type="submit" value="Create"/>
             {campoVacio ? <p>Por favor llena todos los campos para crear la nota</p>:null}
         </form>
