@@ -26,9 +26,9 @@ function App() {
       ]
     )
   }
-  const editNotes = (id) => {
-    console.log(id);
-    setModal(true)
+  const editNotes = () => {
+    setModal(!modal)
+    console.log(modal)
   }
   const deleteNotes = (id) => {
     const newNotes = postedNotes.filter(note => note.id !== id);
@@ -44,7 +44,7 @@ function App() {
         )
       })}
     </div>
-    {modal ? <Modal editNotes={editNotes} postedNotes={postedNotes} /> : null}
+    {modal ? <Modal editNotes={editNotes}/> : null}
     </>
   );
 }
