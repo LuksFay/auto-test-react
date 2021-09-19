@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import NewNote from './components/NewNote'
 import Notes from './components/Notes';
 import Modal from './components/Modal';
+import './App.css'
 function App() {
 
   let initialNotes = JSON.parse(localStorage.getItem('postedNotes'));
@@ -28,7 +29,6 @@ function App() {
   }
   const editNotes = () => {
     setModal(!modal)
-    console.log(modal)
   }
   const deleteNotes = (id) => {
     const newNotes = postedNotes.filter(note => note.id !== id);
@@ -36,6 +36,7 @@ function App() {
   }
   return (
     <>
+    <div  className="container">
     <NewNote showNote={showNote}/>
     <div>
       {postedNotes.map((Note)=>{
@@ -45,7 +46,11 @@ function App() {
       })}
     </div>
     {modal ? <Modal editNotes={editNotes}/> : null}
+    </div>
     </>
   );
 }
+
+
+
 export default App;

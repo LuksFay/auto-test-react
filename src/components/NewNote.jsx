@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types';
+import './NewNote.css';
 // import {v4 as uuidv4} from 'uuid';  //Id import
 const shortid = require('shortid'); // Id import
 const NewNote = ({showNote}) => {
@@ -28,11 +29,11 @@ const NewNote = ({showNote}) => {
       
     }
     return(
-        <form onSubmit={submitNote}>
-            <input type="text" name="title" onChange={writingNote} value={title} />
-            <textarea name="content" cols="30" rows="10" onChange={writingNote} value={content}></textarea>
-            <input type="submit" value="Create"/>
-            {campoVacio ? <p>Por favor llena todos los campos para crear la nota</p>:null}
+        <form onSubmit={submitNote} className="order">
+            <input type="text" name="title" onChange={writingNote} value={title} className="input-text" maxLength="50"/>
+            <textarea name="content" onChange={writingNote} value={content} className="text-area" maxLength="200"></textarea>
+            <input type="submit" value="Create" className="button"/>
+            {campoVacio ? <p className="alert">Por favor llena todos los campos para crear la nota</p>:null}
         </form>
     )  
 }

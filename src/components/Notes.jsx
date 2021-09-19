@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Notes.css';
 const Notes = ({Note, deleteNotes, editNotes}) => {
     return (
         <>
-        <div>
+        <div className="order">
             <p>title: {Note.title}</p>
             <p>content: {Note.content}</p>
             <button onClick={() => editNotes(Note.id)}>edit</button>

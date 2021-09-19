@@ -1,0 +1,13 @@
+.container{
+    max-width: 980px;
+    margin: auto;
+    margin-top: 50px;
+}
+.order{
+    display: flex;
+    /* flex-direction: column;  */
+    align-items: center;
+}
+.prueba{
+    background-color: red;
+}
