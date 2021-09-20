@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Notes.css';
-const Notes = ({Note, deleteNotes, editNotes}) => {
+const Notes = ({Note, deleteNotes, openModal}) => {
     return (
         <>
-        <div className="order">
-            <p>title: {Note.title}</p>
-            <p>content: {Note.content}</p>
-            <button onClick={() => editNotes(Note.id)}>edit</button>
-            <button onClick={()=>  deleteNotes(Note.id)}>delete</button>
+        <div className="order note-bg">
+            <div>
+            <h4>{Note.title}</h4>
+            <p>{Note.content}</p>
+            </div>
+            <div className="note-buttons-div">
+            <button onClick={() => openModal(Note.id)} className="note-buttons">E</button>
+            <button onClick={()=>  deleteNotes(Note.id)} className="note-buttons">D</button>
+            </div>
         </div>
         </>
     )

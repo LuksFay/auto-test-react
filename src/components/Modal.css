@@ -1,0 +1,33 @@
+.button-cancel{
+    width: 31.5%;
+    padding: 5px;
+    background-color: #fc3737;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.modal-bg{
+    background-color: #f8a79a;
+    width: 40%;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    border-radius: 3px;
+}
+.input-modal{
+    width: 60%;
+}
+.area-modal{
+    width: 60%;
+}
+.filter{
+    position: absolute;
+    filter: opacity(20%);
+    width: 100%;
+    height: 1000%;
+    background-color: black;
+    top: 0;
+    left: 0;
+}

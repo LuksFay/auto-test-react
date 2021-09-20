@@ -5,9 +5,15 @@
 }
 .order{
     display: flex;
-    /* flex-direction: column;  */
+    flex-direction: column; 
     align-items: center;
+    width: 100%;
+    margin: auto;
 }
 .prueba{
-    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
 }

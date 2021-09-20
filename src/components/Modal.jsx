@@ -1,14 +1,20 @@
 import React from 'react'
-const Modal = ({editNotes}) => {
+import './Modal.css'
+const Modal = ({openModal, editNotes, Note}) => {
 
     return(
-        <div>
-            <h2>Edit your note</h2>
-            <input type="text" />
-            <textarea name="content" cols="30" rows="10" ></textarea>
-            <button>Edit</button>
-            <button onClick={()=> editNotes()}>Cancel</button>
+        <>
+        <div className="filter"></div>
+        <div className="modal-bg">
+            <div className="order">
+                <h2>Edit</h2>
+                <input type="text"className="input-text input-modal"/>
+                <textarea name="content" className="text-area area-modal" ></textarea>
+                <button onClick={()=>editNotes(Note)} className="button" >Edit</button>
+                <button onClick={()=> openModal()} className="button-cancel">Cancel</button>
+            </div>        
         </div>
+        </>
     )
 }
 

@@ -27,26 +27,50 @@ function App() {
       ]
     )
   }
-  const editNotes = () => {
+  const openModal = (id) => {
     setModal(!modal)
+    console.log('modal',id);
   }
   const deleteNotes = (id) => {
     const newNotes = postedNotes.filter(note => note.id !== id);
     setPostedNote(newNotes)
   }
+
+  const editNotes = (Note) => {
+    console.log('edit', Note);
+    
+  }
   return (
     <>
     <div  className="container">
-    <NewNote showNote={showNote}/>
-    <div>
-      {postedNotes.map((Note)=>{
+      
+      <NewNote showNote={showNote}/>
+      
+      <div className="prueba">
+        {postedNotes.map((Note)=>{
+          return(
+            <Notes key={Note.id} Note={Note}  deleteNotes={deleteNotes} openModal={openModal}/>
+          )
+        })}
+      </div>
+
+
+      {/* {modal ? <Modal openModal={openModal} editNotes={editNotes} postedNotes={postedNotes}/> : null} */}
+      {modal 
+      ? postedNotes.map((Note)=>{
+        console.log('mapeada',Note.id)
         return(
-          <Notes key={Note.id} Note={Note}  deleteNotes={deleteNotes} editNotes={editNotes}/>
+            <Modal key={Note.id} openModal={openModal} editNotes={editNotes} Note={Note} /> 
+            
         )
-      })}
+        })
+        : null
+      }
+    
+    
     </div>
-    {modal ? <Modal editNotes={editNotes}/> : null}
-    </div>
+
+
     </>
   );
 }

@@ -1,0 +1,20 @@
+.note-bg{
+    background-color: #f8a79a;
+    max-width: 250px;
+    text-align: center;
+    text-overflow: ellipsis;
+    padding: 20px;
+}
+.note-buttons-div{
+    display: flex;
+    align-content: end;
+    gap: 10px;
+    position: relative;
+    bottom: -15px;
+}
+.note-buttons{
+    border-radius: 100%;
+    border: none;
+    background-color: #fc3737a9;
+    color: #fff;
+}
