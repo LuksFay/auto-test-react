@@ -3,6 +3,9 @@ import NewNote from './components/NewNote'
 import Notes from './components/Notes';
 import Modal from './components/Modal';
 import './App.css'
+
+
+
 function App() {
 
   let initialNotes = JSON.parse(localStorage.getItem('postedNotes'));
@@ -11,6 +14,10 @@ function App() {
   }
   const [postedNotes,setPostedNote] = useState(initialNotes);
   const [modal, setModal] = useState(false)
+  const [selectedNote, setSelectedNote] = useState({})
+
+
+
   useEffect(()=>{
     let initialNotes = JSON.parse(localStorage.getItem('postedNotes'));
     if(initialNotes){
@@ -19,6 +26,10 @@ function App() {
       localStorage.setItem('postedNotes',JSON.stringify([]));
     }
   },[postedNotes]);
+
+
+
+
   const showNote = (postedNote) => {
     setPostedNote(
       [
@@ -27,9 +38,10 @@ function App() {
       ]
     )
   }
-  const openModal = (id) => {
+  const openModal = (note) => {
     setModal(!modal)
-    console.log('modal',id);
+    setSelectedNote(note)
+    console.log('modal',note);
   }
   const deleteNotes = (id) => {
     const newNotes = postedNotes.filter(note => note.id !== id);
@@ -37,9 +49,20 @@ function App() {
   }
 
   const editNotes = (Note) => {
-    console.log('edit', Note);
-    
+    const notasEditadas = postedNotes.map((nota)=>{
+      if(Note.id === nota.id){
+        return Note
+      }else{
+       return nota
+      }
+    })
+    setPostedNote(notasEditadas)
+    setModal(!modal)
   }
+
+
+
+  
   return (
     <>
     <div  className="container">
@@ -55,18 +78,8 @@ function App() {
       </div>
 
 
-      {/* {modal ? <Modal openModal={openModal} editNotes={editNotes} postedNotes={postedNotes}/> : null} */}
-      {modal 
-      ? postedNotes.map((Note)=>{
-        console.log('mapeada',Note.id)
-        return(
-            <Modal key={Note.id} openModal={openModal} editNotes={editNotes} Note={Note} /> 
-            
-        )
-        })
-        : null
-      }
-    
+      {modal ? <Modal openModal={openModal} editNotes={editNotes} selectedNote={selectedNote} setSelectedNote={setSelectedNote}/> : null}
+      
     
     </div>
 

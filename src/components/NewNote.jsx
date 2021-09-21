@@ -4,14 +4,14 @@ import './NewNote.css';
 // import {v4 as uuidv4} from 'uuid';  //Id import
 const shortid = require('shortid'); // Id import
 const NewNote = ({showNote}) => {
-    const [note,createNote] = useState({
+    const [note,setNote] = useState({
         title:'',
         content: ''
     })
     const [campoVacio, setCampoVacio] = useState(false)
     const {title,content} = note
     const writingNote = (e) => {
-       createNote({
+       setNote({
            ...note,
            [e.target.name]: e.target.value
        })
@@ -22,7 +22,7 @@ const NewNote = ({showNote}) => {
         setCampoVacio(false)
         note.id = shortid.generate()    
         showNote(note)
-        createNote({
+        setNote({
             title: '',
             content: ''
         })

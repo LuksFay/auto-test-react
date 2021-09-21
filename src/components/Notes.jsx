@@ -10,7 +10,7 @@ const Notes = ({Note, deleteNotes, openModal}) => {
             <p>{Note.content}</p>
             </div>
             <div className="note-buttons-div">
-            <button onClick={() => openModal(Note.id)} className="note-buttons">E</button>
+            <button onClick={() => openModal(Note)} className="note-buttons">E</button>
             <button onClick={()=>  deleteNotes(Note.id)} className="note-buttons">D</button>
             </div>
         </div>

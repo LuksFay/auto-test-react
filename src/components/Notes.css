@@ -7,7 +7,7 @@
 }
 .note-buttons-div{
     display: flex;
-    align-content: end;
+    align-content: flex-end;
     gap: 10px;
     position: relative;
     bottom: -15px;
